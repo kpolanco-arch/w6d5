@@ -1,12 +1,12 @@
 class CatsController < ApplicationController
 
     def index
-        cats = Cat.all
+        @cats = Cat.all
         render :index
     end
 
     def show
-        @cat = Cat.find_by(params[:id])
+        @cat = Cat.find_by(id: params[:id])
 
         if @cat
             render :show
@@ -35,10 +35,11 @@ class CatsController < ApplicationController
             render :show
         else 
             render :new
+        end
     end
 
     def update
-        @cat = Cat.find_by(params[:id])
+        @cat = Cat.find_by(id: params[:id])
         if @cat.update(cat_params)
             redirect_to cat_url(@cat)
         else
@@ -47,7 +48,7 @@ class CatsController < ApplicationController
     end
 
     def destroy
-        @cat = Cat.find_by(params[:id])
+        @cat = Cat.find_by(id: params[:id])
         cat.destroy
         render :index
 
