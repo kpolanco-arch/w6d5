@@ -2,12 +2,8 @@
 <h1> Come see all the cats! </h1>
 
 
-<ul> 
-
-    <% @cats.each do |cat| %>
-     <li> <%=  cat.name %> </li>
-    <li> <a href = "<%= cat_url(cat.id) %>>" > MY URL</a></li>
-
-    <% end %>
- </ul>
-
+<ul>
+  <% @cats.each do |cat| %>
+    <li><a href="<%= cats_url(cat.id) %>"> <%= cat.name %> </a></li>
+  <% end %>
+</ul>

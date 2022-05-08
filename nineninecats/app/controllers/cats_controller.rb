@@ -1,12 +1,12 @@
 class CatsController < ApplicationController
 
     def index
-        @cats = Cat.all
+        @cats = Cat.order(:name)
         render :index
     end
 
     def show
-        @cat = Cat.find_by(id: params[:id])
+        @cat = Cat.find(params[:id])
 
         if @cat
             render :show
